@@ -1,0 +1,47 @@
+package pomtest;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+import pom.Home_page;
+
+public class Home_page_test {
+
+	@Test
+	public void login_page() throws InterruptedException {
+
+		System.setProperty("webdriver.chrome.driver", "/home/yaseenyazoutloo/Downloads/chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get("http://localhost:9012/FlyAway/");
+
+		Thread.sleep(3000);
+		WebElement courseElement =
+				driver.findElement(By.xpath("//select[@name='source']"));
+		Select courseNameDropdown = new Select(courseElement);
+		courseNameDropdown.selectByIndex(2);
+
+		Thread.sleep(3000);
+		WebElement courseElement1 =
+				driver.findElement(By.xpath("//select[@name='destination']"));
+		Select courseNameDropdown1 = new Select(courseElement1);
+		courseNameDropdown1.selectByIndex(3);
+		
+		Thread.sleep(3000);
+		Home_page.submit.click();
+		
+		Thread.sleep(3000);
+		Home_page.bookflight.click();
+		
+
+	}
+}
+
+

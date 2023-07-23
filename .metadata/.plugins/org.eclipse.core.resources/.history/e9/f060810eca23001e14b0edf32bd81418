@@ -1,0 +1,27 @@
+package pomtest;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import pom.Home_page;
+
+public class Home_page_test {
+
+	@Test
+	public void login_page() {
+		
+		System.setProperty("webdriver.chrome.driver", "/home/yaseenyazoutloo/Downloads/chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get("http://localhost:9012/FlyAway/");
+		
+		Home_page.Source.click();
+		
+	}
+}
+	
+
